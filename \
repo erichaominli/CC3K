@@ -1,0 +1,73 @@
+#include "vampire.h"
+
+Vampire::Vampire() : Player( 50, 50, 25, 25, 25, 25, 0, "Vampire" ) {}
+Vampire::~Vampire() {}
+
+void Vampire::mutHP( int i ) 
+{
+  HP += i;
+  if ( HP <= 0 )
+  {
+    HP = 0;
+    slain();
+  }
+}
+
+void Vampire::attack( Human &e )
+{
+  std::cout << "Vampire Attacks Human" << std::endl;
+  int dmg = damage( e );
+  e.mutHP( -dmg );
+  mutHP( 5 );
+}
+
+void Vampire::attack( Dwarf &e )
+{
+  std::cout << "Vampire Attacks Dwarf" << std::endl;
+  int dmg = damage( e );
+  e.mutHP( -dmg );
+  mutHP( -5 );
+}
+
+void Vampire::attack( Elf &e )
+{
+  std::cout << "Vampire Attacks Elf" << std::endl;
+  int dmg = damage( e );
+  e.mutHP( -dmg );
+  mutHP( 5 );
+}
+
+void Vampire::attack( Orc  &e )
+{
+  std::cout << "SVampire Attacks Orc" << std::endl;
+  int dmg = damage( e );
+  e.mutHP( -dmg );
+  mutHP( 5 );
+}
+
+void Vampire::attack( Merchant &e )
+{
+  std::cout << "Vampire Attacks Merchant" << std::endl;
+  int dmg = damage( e );
+  e.mutHP( -dmg );
+  mutHP( 5 );
+}
+
+void Vampire::attack( Dragon &e )
+{
+  std::cout << "Vampire Attacks Dragon" << std::endl;
+  int dmg = damage( e );
+  e.mutHP( -dmg );
+  mutHP( 5 );
+}
+
+void Vampire::attack( Halfling &e )
+{
+  std::cout << "Vampire Attacks Halfling" << std::endl;
+  int dmg = damage( e );
+  e.mutHP( -dmg );
+  mutHP( 5 );
+}
+
+void Vampire::attackedBy( Enemy &e ) { e.attack( * this ); }
+
