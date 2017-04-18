@@ -2,77 +2,113 @@
 
 int Merchant::agro = false;
 
-Merchant::Merchant() : Enemy( 30, 30, 70, 70, 25, 25, 0, "Merchant" ) {}
+Merchant::Merchant() : Enemy( 30, 30, 70, 70, 25, 25, 0, "Merchant", 'M' ) {}
 Merchant::~Merchant() {}
 
 void Merchant::attack( Shade &p )
 {
-  std::cout << "Merchant Attacks Shade" << std::endl;
-  if ( fiftyFifty() )
+  if (Merchant::agro)
   {
-    int dmg = damage( p );
-    std::cout << dmg << std::endl;
-    p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+    if ( fiftyFifty() )
+    {
+      int dmg = damage( p );
+      p.mutHP( -dmg );
+      act = "";
+      std::string sdmg = std::to_string(dmg);
+      act = " M deals " + sdmg + " to PC" ;
+    }
+    else
+    {
+      act = "";
+      act = " M Attack missed! PC ";
+    }
   }
-  else std::cout << "missed" << std::endl;
 }
 
 void Merchant::attack( Drow &p )
 {
-  std::cout << "Merchant Attacks Drow" << std::endl;
-  if ( fiftyFifty() )
+  if ( Merchant::agro )
   {
-    int dmg = damage( p );
-    std::cout << dmg << std::endl;
-    p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+    if ( fiftyFifty() )
+    {
+      int dmg = damage( p );
+      p.mutHP( -dmg );
+      act = "";
+      std::string sdmg = std::to_string(dmg);
+      act = " M deals " + sdmg + " to PC" ;
+    }
+    else
+    {
+      act = "";
+      act = " M Attack missed! PC ";
+    }
   }
-  else std::cout << "missed" << std::endl;
 }
 
 void Merchant::attack( Vampire &p )
 {
-  std::cout << "Merchant Attacks Vampire" << std::endl;
-  if ( fiftyFifty() )
+  if ( Merchant::agro )
   {
-    int dmg = damage( p );
-    std::cout << dmg << std::endl;
-    p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+    if ( fiftyFifty() )
+    {
+      int dmg = damage( p );
+      p.mutHP( -dmg );
+      act = "";
+      std::string sdmg = std::to_string(dmg);
+      act = " M deals " + sdmg + " to PC" ;
+    }
+    else
+    {
+      act = "";
+      act = " M Attack missed! PC ";
+    }
   }
-  else std::cout << "missed" << std::endl;
 }
 
 void Merchant::attack( Troll &p )
-{
-  std::cout << "Merchant Attacks Troll" << std::endl;
-  if ( fiftyFifty() )
+{ 
+  if ( Merchant::agro )
   {
-    int dmg = damage( p );
-    std::cout << dmg << std::endl;
-    p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+    if ( fiftyFifty() )
+    {
+      int dmg = damage( p );
+      p.mutHP( -dmg );
+      act = "";
+      std::string sdmg = std::to_string(dmg);
+      act = " M deals " + sdmg + " to PC" ;
+    }
+    else
+    {
+      act = "";
+      act = " M Attack missed! PC ";
+    }
   }
-  else std::cout << "missed" << std::endl;
 }
 
 void Merchant::attack( Goblin &p )
 {
-  std::cout << "Merchant Attacks Goblin" << std::endl;
-  if ( fiftyFifty() )
+  if ( Merchant::agro )
   {
-    int dmg = damage( p );
-    std::cout << dmg << std::endl;
-    p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+    if ( fiftyFifty() )
+    {
+      int dmg = damage( p );
+      p.mutHP( -dmg );
+      act = "";
+      std::string sdmg = std::to_string(dmg);
+      act = " M deals " + sdmg + " to PC" ;
+    }
+    else
+    {
+      act = "";
+      act = " M Attack missed! PC ";
+    }
   }
-  else std::cout << "missed" << std::endl;
 }
 
 void Merchant::attackedBy( Player &p ) 
 { 
-  agro = true;
+  Merchant::agro = true;
   p.attack( *this ); 
+  p.attackedBy( *this );
 }
 

@@ -5,69 +5,83 @@ Drow::~Drow() {}
 
 void Drow::attack( Human &e )
 {
-  std::cout << "Drow Attacks Human" << std::endl;
   int dmg = damage( e );
-  std::cout << dmg << std::endl;
   e.mutHP( -dmg );
-  std::cout << e.getHP() << std::endl;
+  act = "";
+  std::string sdmg = std::to_string(dmg);
+  std::string hp = std::to_string(e.getHP());
+  act = " PC deals " + sdmg + " to H (" + hp + " HP)." ;
+
 }
 
 void Drow::attack( Dwarf &e )
 {
-  std::cout << "Drow Attacks Dwarf" << std::endl;
   int dmg = damage( e );
-  std::cout << dmg << std::endl;
   e.mutHP( -dmg );
-  std::cout << e.getHP() << std::endl;
+  act = "";
+  std::string sdmg = std::to_string(dmg);
+  std::string hp = std::to_string(e.getHP());
+  act = " PC deals " + sdmg + " to W (" + hp + " HP)." ;
 }
 
 void Drow::attack( Elf &e )
 {
-  std::cout << "Drow Attacks Elf" << std::endl;
   int dmg = damage( e );
-  std::cout << dmg << std::endl;
   e.mutHP( -dmg );
-  std::cout << e.getHP() << std::endl;
+  act = "";
+  std::string sdmg = std::to_string(dmg);
+  std::string hp = std::to_string(e.getHP());
+  act = " PC deals " + sdmg + " to E (" + hp + " HP)." ;
 }
 
 void Drow::attack( Orc  &e )
 {
-  std::cout << "Drow Attacks Orc" << std::endl;
   int dmg = damage( e );
-  std::cout << dmg << std::endl;
   e.mutHP( -dmg );
-  std::cout << e.getHP() << std::endl;
+  act = "";
+  std::string sdmg = std::to_string(dmg);
+  std::string hp = std::to_string(e.getHP());
+  act = " PC deals " + sdmg + " to O (" + hp + " HP)." ;
 }
 
 void Drow::attack( Merchant &e )
 {
-  std::cout << "Drow Attacks Merchant" << std::endl;
   int dmg = damage( e );
-  std::cout << dmg << std::endl;
   e.mutHP( -dmg );
-  std::cout << e.getHP() << std::endl;
+  act = "";
+  std::string sdmg = std::to_string(dmg);
+  std::string hp = std::to_string(e.getHP());
+  act = " PC deals " + sdmg + " to M (" + hp + " HP)." ;
+
 }
 
 void Drow::attack( Dragon &e )
 {
-  std::cout << "Drow Attacks Dragon" << std::endl;
   int dmg = damage( e );
-  std::cout << dmg << std::endl;
   e.mutHP( -dmg );
-  std::cout << e.getHP() << std::endl;
+  act = "";
+  std::string sdmg = std::to_string(dmg);
+  std::string hp = std::to_string(e.getHP());
+  act = " PC deals " + sdmg + " to D (" + hp + " HP)." ;
 }
 
 void Drow::attack( Halfling &e )
 {
-  std::cout << "Drow Attacks Halfling" << std::endl;
   if ( fiftyFifty() )
   {
     int dmg = damage( e );
-    std::cout << dmg << std::endl;
-    e.mutHP( -dmg );
-    std::cout << e.getHP() << std::endl;
+    e.mutHP( -dmg ); 
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    std::string hp = std::to_string(e.getHP());
+    act = " PC deals " + sdmg + " to L (" + hp + " HP)." ;
   }
-  else std::cout << "missed" << std::endl;
+  else 
+  {
+    act = "";
+    std::string hp = std::to_string(e.getHP());
+    act = " PC attack missed! L (" + hp + " HP)." ;
+  }   
 }
 
 void Drow::attackedBy( Enemy &e ) { e.attack( * this ); }

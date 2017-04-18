@@ -1,32 +1,95 @@
 #include "dragon.h"
 
-Dragon::Dragon() : Enemy( 150, 150, 30, 30, 25, 25, 0, "Dragon" ) {}
+Dragon::Dragon() : Enemy( 150, 150, 20, 20, 20, 20, 0, "Dragon", 'D' ) {}
 Dragon::~Dragon() {}
 
-void Dragon::attack( Shade &s )
+void Dragon::attack( Shade &p )
 {
-  std::cout << "Draogn Attacks Shade" << std::endl;
+  if ( fiftyFifty() )
+  {
+    int dmg = damage( p );
+    p.mutHP( -dmg );
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " D deals " + sdmg + " to PC." ;
+  }
+  else
+  {
+    act = "";
+    act = " D Attack missed! PC.";
+  }
 }
 
-void Dragon::attack( Drow &d )
+void::Dragon::attack( Troll &p )
 {
-  std::cout << "Dragon Attacks Drow" << std::endl;
+  if ( fiftyFifty() )
+  {
+    int dmg = damage( p );
+    p.mutHP( -dmg );
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " D deals " + sdmg + " to PC." ;
+  }
+  else
+  {
+    act = "";
+    act = " D Attack missed! PC.";
+  }
 }
 
-void Dragon::attack( Vampire &v )
+void Dragon::attack( Drow &p )
 {
-  std::cout << "Draogn Attacks Vampire" << std::endl;
+  if ( fiftyFifty() )
+  {
+    int dmg = damage( p );
+    p.mutHP( -dmg );
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " D deals " + sdmg + " to PC." ;
+  }
+  else
+  {
+    act = "";
+    act = " D Attack missed! PC.";
+  }
 }
 
-void Dragon::attack( Troll &t )
+void Dragon::attack( Vampire &p )
 {
-  std::cout << "Dragon Attacks Troll" << std::endl;
+  if ( fiftyFifty() )
+  {
+    int dmg = damage( p );
+    p.mutHP( -dmg );
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " D deals " + sdmg + " to PC." ;
+  }
+  else
+  {
+    act = "";
+    act = " D Attack missed! PC.";
+  }
 }
 
-void Dragon::attack( Goblin &g )
+void Dragon::attack( Goblin &p )
 {
-  std::cout << "Dragon Attacks Drow" << std::endl;
+  if ( fiftyFifty() )
+  {
+    int dmg = damage( p );
+    p.mutHP( -dmg );
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " D deals " + sdmg + " to PC." ;
+  }
+  else
+  {
+    act = "";
+    act = " D Attack missed! PC.";
+  }
 }
 
-void Dragon::attackedBy( Player &p ) { p.attack( *this ); }
-
+void Dragon::attackedBy( Player &p )
+{
+  p.attack( *this );
+  p.attackedBy( *this );
+}

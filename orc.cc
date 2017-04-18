@@ -1,74 +1,95 @@
 #include "orc.h"
 
-Orc::Orc() : Enemy( 180, 180, 30, 30, 25, 25, 0, "Orc" ) {}
+Orc::Orc() : Enemy( 180, 180, 30, 30, 25, 25, 0, "Orc", 'O' ) {}
 Orc::~Orc() {}
 
 void Orc::attack( Shade &p )
 {
-  std::cout << "Orc Attacks Shade" << std::endl;
   if ( fiftyFifty() )
   {
     int dmg = damage( p );
-    std::cout << dmg << std::endl;
     p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " O deals " + sdmg + " to PC." ;
   }
-  else std::cout << "missed" << std::endl;
+  else
+  {
+    act = "";
+    act = " O Attack missed! PC.";
+  }
 }
 
 void Orc::attack( Drow &p )
 {
-  std::cout << "Orc Attacks Drow" << std::endl;
   if ( fiftyFifty() )
   {
     int dmg = damage( p );
-    std::cout << dmg << std::endl;
     p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " O deals " + sdmg + " to PC." ;
   }
-  else std::cout << "missed" << std::endl;
+  else
+  {
+    act = "";
+    act = " O Attack missed! PC.";
+  }
 }
 
 void Orc::attack( Vampire &p )
 {
-  std::cout << "Orc Attacks Vampire" << std::endl;
   if ( fiftyFifty() )
   {
     int dmg = damage( p );
-    std::cout << dmg << std::endl;
     p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " O deals " + sdmg + " to PC." ;
   }
-  else std::cout << "missed" << std::endl;
+  else
+  {
+    act = "";
+    act = " O Attack missed! PC.";
+  }
 }
 
 void Orc::attack( Troll &p )
 {
-  std::cout << "Orc Attacks Troll" << std::endl;
   if ( fiftyFifty() )
   {
     int dmg = damage( p );
-    std::cout << dmg << std::endl;
     p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " O deals " + sdmg + " to PC." ;
   }
-  else std::cout << "missed" << std::endl;
+  else
+  {
+    act = "";
+    act = " O Attack missed! PC.";
+  }
 }
 
 void Orc::attack( Goblin &p )
 {
-  std::cout << "Orc Attacks Goblin" << std::endl;
   if ( fiftyFifty() )
   {
-    double a = atk;
-    double b = p.getDef();
-    int dmg = ceil( 1.5 * ( 100 / ( 100 + b )  ) * a );
-    std::cout << dmg << std::endl;
+    int dmg = damage( p ) * 1.5;
     p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " O deals " + sdmg + " to PC." ;
   }
-  else std::cout << "missed" << std::endl;
+  else
+  {
+    act = "";
+    act = " O Attack missed! PC.";
+  }
 }
 
-void Orc::attackedBy( Player &p ) { p.attack( *this ); }
-
+void Orc::attackedBy( Player &p ) 
+{
+  p.attack( *this );
+  p.attackedBy( *this );
+}

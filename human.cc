@@ -1,65 +1,103 @@
 #include "human.h"
 
-Human::Human() : Enemy( 140, 140, 20, 20, 20, 20, 0, "Human" ) {}
+Human::Human() : Enemy( 140, 140, 20, 20, 20, 20, 0, "Human", 'H' ) {}
 Human::~Human(){}
 
 void Human::attack( Shade &p )
 {
-  std::cout << "Human Attacks Shade" << std::endl;
   if ( fiftyFifty() )
   {
     int dmg = damage( p );
-    std::cout << dmg << std::endl;
     p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " H deals " + sdmg + " to PC." ;
   }
-  else std::cout << "missed" << std::endl;
+  else
+  {
+    act = "";
+    std::string hp = std::to_string(p.getHP() );
+    act = " H Attack missed! PC.";
+  }
 }
 
+	 
 void Human::attack( Drow &p )
 {
-  std::cout << "Human Attacks Drow" << std::endl;
+  if ( fiftyFifty() )
+  { 
+    int dmg = damage( p );
+    p.mutHP( -dmg );
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " H deals " + sdmg + " to PC." ;
+  }
+  else
+  {
+    act = "";
+    std::string hp = std::to_string(p.getHP() );
+    act = " H Attack missed! PC.";
+  }
 }
 
 void Human::attack( Vampire &p )
 {
-  std::cout << "Human Attacks Vampire" << std::endl;
   if ( fiftyFifty() )
   {
     int dmg = damage( p );
     std::cout << dmg << std::endl;
     p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+      act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " H deals " + sdmg + " to PC." ;
   }
-  else std::cout << "missed" << std::endl;
+  else
+  {
+    act = "";
+    act = " H Attack missed! PC.";
+  }
+
 }
 
 void Human::attack( Troll &p )
 {
-  std::cout << "Human Attacks Troll" << std::endl;
   if ( fiftyFifty() )
   {
     int dmg = damage( p );
-    std::cout << dmg << std::endl;
     p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+      act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " H deals " + sdmg + " to PC." ;
   }
-  else std::cout << "missed" << std::endl;
+  else
+  {
+    act = "";
+    act = " H Attack missed! PC.";
+  }
+
 }
 
 
 void Human::attack( Goblin &p )
 {
-  std::cout << "Human Attacks Drow" << std::endl;
   if ( fiftyFifty() )
   {
     int dmg = damage( p );
-    std::cout << dmg << std::endl;
     p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " H deals " + sdmg + " to PC.";
   }
-  else std::cout << "missed" << std::endl;
+  else
+  {
+    act = "";
+    act = " H Attack missed! PC.";
+  }
 }
 
 
-void Human::attackedBy( Player &p ) { p.attack( *this ); }
+void Human::attackedBy( Player &p ) 
+{ 
+  p.attack( *this );  
+  p.attackedBy( *this );
+}

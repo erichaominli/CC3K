@@ -13,7 +13,6 @@ class Human : public Enemy
   public:
   Human();
   ~Human();
-  
   void attack( Shade &s );
   void attack( Drow &d );
   void attack( Vampire &v );

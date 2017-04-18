@@ -4,12 +4,10 @@
 class Posn
 {
   int x, y;
-  public:
-  
-  getX();
-  geyY();
-  setX();
-  setY();
+  public: 
+  Posn(int x, int y);
+  int getX();
+  int getY();
 };
 
-#define _POSN_H_
+#endif

@@ -5,69 +5,82 @@ Goblin::~Goblin() {}
 
 void Goblin::attack( Human &e )
 {
-  std::cout << "goblin Attacks Human" << std::endl;
   int dmg = damage( e );
-  std::cout << dmg << std::endl;
   e.mutHP( -dmg );
-  std::cout << e.getHP() << std::endl;
+  act = "";
+  std::string sdmg = std::to_string(dmg);
+  std::string hp = std::to_string(e.getHP());
+  act = " PC deals " + sdmg + " to H (" + hp + " HP)." ;
+
 }
 
 void Goblin::attack( Dwarf &e )
 {
-  std::cout << "Goblin Attacks Dwarf" << std::endl;
+  act = "";
   int dmg = damage( e );
-  std::cout << dmg << std::endl;
   e.mutHP( -dmg );
-  std::cout << e.getHP() << std::endl;
+  std::string sdmg = std::to_string(dmg);
+  std::string hp = std::to_string(e.getHP());
+  act = " PC deals " + sdmg + " to W (" + hp + " HP)." ;
 }
 
 void Goblin::attack( Elf &e )
 {
-  std::cout << "Goblin Attacks Elf" << std::endl;
+  act = "";
   int dmg = damage( e );
-  std::cout << dmg << std::endl;
   e.mutHP( -dmg );
-  std::cout << e.getHP() << std::endl;
+  std::string sdmg = std::to_string(dmg);
+  std::string hp = std::to_string(e.getHP());
+  act = " PC deals " + sdmg + " to E (" + hp + " HP)." ;
 }
 
 void Goblin::attack( Orc  &e )
 {
-  std::cout << "Goblin Attacks Orc" << std::endl;
+  act = "";
   int dmg = damage( e );
-  std::cout << dmg << std::endl;
   e.mutHP( -dmg );
-  std::cout << e.getHP() << std::endl;
+  std::string sdmg = std::to_string(dmg);
+  std::string hp = std::to_string(e.getHP());
+  act = " PC deals " + sdmg + " to O (" + hp + " HP)." ;
 }
 
 void Goblin::attack( Merchant &e )
 {
-  std::cout << "Goblin Attacks Merchant" << std::endl;
+  act = "";
   int dmg = damage( e );
-  std::cout << dmg << std::endl;
   e.mutHP( -dmg );
-  std::cout << e.getHP() << std::endl;
+  std::string sdmg = std::to_string(dmg);
+  std::string hp = std::to_string(e.getHP());
+  act = " PC deals " + sdmg + " to M (" + hp + " HP)." ;
 }
 
 void Goblin::attack( Dragon &e )
 {
-  std::cout << "Goblin Attacks Dragon" << std::endl;
+  act = "";
   int dmg = damage( e );
-  std::cout << dmg << std::endl;
   e.mutHP( -dmg );
-  std::cout << e.getHP() << std::endl;
+  std::string sdmg = std::to_string(dmg);
+  std::string hp = std::to_string(e.getHP());
+  act = " PC deals " + sdmg + " to D (" + hp + " HP)." ;
 }
 
 void Goblin::attack( Halfling &e )
 {
-  std::cout << "Goblin Attacks Halfling" << std::endl;
+  act = "";
   if ( fiftyFifty() )
   {
     int dmg = damage( e );
-    std::cout << dmg << std::endl;
     e.mutHP( -dmg );
-    std::cout << e.getHP() << std::endl;
+    std::string sdmg = std::to_string(dmg);
+    std::string hp = std::to_string(e.getHP());
+    act = " PC deals " + sdmg + " to L (" + hp + " HP)." ;
+
   }
-  else std::cout << "missed" << std::endl;
+  else
+  {
+  std::string hp = std::to_string(e.getHP());
+  act = " PC attack missed! L (" + hp + " HP)." ;
+  }
 }
 
 void Goblin::attackedBy( Enemy &e ) { e.attack( * this ); }

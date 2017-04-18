@@ -1,113 +1,157 @@
 #include "elf.h"
 
-Elf::Elf() : Enemy( 140, 140, 30, 30, 10, 10, 0, "Elf" ) {}
+Elf::Elf() : Enemy( 140, 140, 30, 30, 10, 10, 0, "Elf", 'E' ) {}
 Elf::~Elf() {}
 
 void Elf::attack( Shade &p )
 {
-  std::cout << "Elf Attacks Shade" << std::endl;
   int dmg = damage( p );
   if ( fiftyFifty() )
   {
-    std::cout << dmg << std::endl;
     p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
-    if ( p.getHP() <= 0 ) return;
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " E deals " + sdmg + " to PC." ;
   }
-  else std::cout << "missed" << std::endl;
-  std::cout << "Elf Attacks Shade" << std::endl;
+  else
+  {
+    act = "";
+    act = " E Attack missed! PC.";
+  }
+
+  if ( p.getHP() <= 0 ) return;
+  
   if ( fiftyFifty() )
   {
-    int dmg = damage( p );
-    std::cout << dmg << std::endl;
     p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " E deals " + sdmg + " to PC." ;
   }
-  else std::cout << "missed" << std::endl;
+  else
+  {
+    act = "";
+    act = " E Attack missed! PC.";
+  }
 }
 
 void Elf::attack( Drow &p )
 {
-  std::cout << "Elf Attacks Drow" << std::endl;
   if ( fiftyFifty() )
   {
     int dmg = damage( p );
-    std::cout << dmg << std::endl;
     p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " E deals " + sdmg + " to PC." ;
   }
-  else std::cout << "missed" << std::endl;
+  else
+  {
+    act = "";
+    act = " E Attack missed! PC.";
+  }
 }
 
 
 void Elf::attack( Vampire &p )
 {
-  std::cout << "Elf Attacks Vampire" << std::endl;
   int dmg = damage( p );
   if ( fiftyFifty() )
   {
-    std::cout << dmg << std::endl;
     p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
-    if ( p.getHP() <= 0 ) return;
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " E deals " + sdmg + " to PC." ;
   }
-  else std::cout << "missed" << std::endl;
-  std::cout << "Elf Attacks Vampire" << std::endl;
-  if ( fiftyFifty() )
+  else
   {
-    int dmg = damage( p );
-    std::cout << dmg << std::endl;
-    p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+    act = "";
+    act = " E Attack missed! PC.";
   }
-  else std::cout << "missed" << std::endl;
+
+  if ( p.getHP() <= 0 ) return;
+  
+  if ( fiftyFifty() )
+  { 
+    p.mutHP( -dmg );
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " E deals " + sdmg + " to PC." ;
+  }
+  else
+  {
+    act = "";
+    act = " E Attack missed! PC.";
+  }
 }
 
 void Elf::attack( Troll &p )
 {
-  std::cout << "Elf Attacks Troll" << std::endl;
   int dmg = damage( p );
   if ( fiftyFifty() )
   {
-    std::cout << dmg << std::endl;
     p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
-    if ( p.getHP() <= 0 ) return;
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " E deals " + sdmg + " to PC." ;
   }
-  else std::cout << "missed" << std::endl;
-  std::cout << "Elf Attacks Troll" << std::endl;
-  if ( fiftyFifty() )
+  else
   {
-    int dmg = damage( p );
-    std::cout << dmg << std::endl;
-    p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+    act = "";
+    act = " E Attack missed! PC.";
   }
-  else std::cout << "missed" << std::endl;
+
+  if ( p.getHP() <= 0 ) return;
+  
+  if ( fiftyFifty() )
+  { 
+    p.mutHP( -dmg );
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " E deals " + sdmg + " to PC." ;
+  }
+  else
+  {
+    act = "";
+    act = " E Attack missed! PC.";
+  }
 }
 
 void Elf::attack( Goblin &p )
 {
-  std::cout << "Elf Attacks Goblin" << std::endl;
   int dmg = damage( p );
   if ( fiftyFifty() )
   {
-    std::cout << dmg << std::endl;
     p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
-    if ( p.getHP() <= 0 ) return;
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " E deals " + sdmg + " to PC." ;
   }
-  else std::cout << "missed" << std::endl;
-  std::cout << "Elf Attacks Goblin" << std::endl;
-  if ( fiftyFifty() )
+  else
   {
-    int dmg = damage( p );
-    std::cout << dmg << std::endl;
-    p.mutHP( -dmg );
-    std::cout << p.getHP() << std::endl;
+    act = "";
+    act = " E Attack missed! PC.";
   }
-  else std::cout << "missed" << std::endl;
+
+  if ( p.getHP() <= 0 ) return;
+  
+  if ( fiftyFifty() )
+  { 
+    int dmg = damage( p );
+    p.mutHP( -dmg );
+    act = "";
+    std::string sdmg = std::to_string(dmg);
+    act = " E deals " + sdmg + " to PC." ;
+  }
+  else
+  {
+    act = "";
+    act = " E Attack missed! PC.";
+  }
 }
 
-void Elf::attackedBy( Player &p ) { p.attack( *this ); }
-
+void Elf::attackedBy( Player &p ) 
+{ 
+  p.attackedBy( *this );
+  p.attack( *this ); 
+}
